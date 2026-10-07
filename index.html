@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050a09">
+<title>9-ELEVEN • Private Digital Hub</title>
+<link rel="icon" href="assets/logo.svg">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+</head>
+<body>
+<div id="fx"><div class="rain"></div><div class="stars"></div><div id="cursorGlow"></div></div>
+<header class="topbar">
+  <div class="brand"><img src="assets/logo.svg"><div><b>9-ELEVEN</b><small>PRIVATE DIGITAL HUB</small></div></div>
+  <div class="status"><span class="dot"></span><span id="statusText">OFFLINE</span></div>
+</header>
+
+<main>
+<section id="gate" class="screen">
+  <div class="glass hero">
+    <div class="eyebrow">SECURE ACCESS • PRIVATE MEDIA PORTAL</div>
+    <h1>ENTER THE <span>9-ELEVEN</span><br>PRIVATE HUB</h1>
+    <p>Access authorized images, videos, audio, documents and applications.</p>
+    <form id="visitorForm">
+      <label>Temporary Visitor Access Code</label>
+      <div class="inputrow"><input id="visitorCode" type="password" autocomplete="off" placeholder="Enter access code" required><button>ACCESS</button></div>
+      <div id="visitorMsg" class="msg"></div>
+    </form>
+    <button id="showAdmin" class="ghost">ADMIN LOGIN</button>
+    <div class="micro">Unauthorized access is restricted.</div>
+  </div>
+</section>
+
+<section id="adminGate" class="screen hidden">
+  <div class="glass authbox">
+    <button class="back" data-back>← Back</button>
+    <div class="eyebrow">OWNER CONTROL</div>
+    <h2>ADMIN LOGIN</h2>
+    <form id="adminForm">
+      <input id="adminEmail" type="email" placeholder="Admin email" required>
+      <input id="adminPassword" type="password" placeholder="Admin password" required>
+      <button>ENTER ADMIN</button>
+      <div id="adminMsg" class="msg"></div>
+    </form>
+  </div>
+</section>
+
+<section id="app" class="hidden">
+  <div class="dashboardHead">
+    <div><div class="eyebrow">CONNECTED</div><h2 id="welcome">WELCOME TO 9-ELEVEN</h2></div>
+    <div class="actions"><button id="adminBtn" class="ghost hidden">ADMIN</button><button id="logoutBtn" class="ghost">EXIT</button></div>
+  </div>
+  <div id="stats" class="stats"></div>
+  <div id="library" class="library"></div>
+</section>
+
+<section id="admin" class="hidden">
+  <div class="dashboardHead">
+    <div><div class="eyebrow">OWNER MODE</div><h2>ADMIN CONTROL CENTER</h2></div>
+    <button id="adminExit" class="ghost">EXIT ADMIN</button>
+  </div>
+  <div class="adminGrid">
+    <div class="glass panel">
+      <h3>Upload Content</h3>
+      <form id="uploadForm">
+        <select id="uploadCategory">
+          <option value="image">Image</option><option value="video">Video</option><option value="audio">Audio</option><option value="document">Document</option><option value="apk">Application / APK</option>
+        </select>
+        <input id="uploadTitle" placeholder="Title" required>
+        <input id="uploadFile" type="file" required>
+        <button>UPLOAD FILE</button>
+        <div id="uploadMsg" class="msg"></div>
+      </form>
+    </div>
+    <div class="glass panel">
+      <h3>Temporary Access Codes</h3>
+      <form id="codeForm">
+        <input id="newCode" placeholder="New access code" required>
+        <input id="codeLabel" placeholder="Label (e.g. Friends)">
+        <input id="codeExpiry" type="datetime-local">
+        <input id="codeMaxUses" type="number" min="1" placeholder="Max uses (optional)">
+        <button>CREATE CODE</button>
+        <div id="codeMsg" class="msg"></div>
+      </form>
+      <div id="codes"></div>
+    </div>
+  </div>
+  <div class="glass panel">
+    <h3>Content Manager</h3>
+    <div id="adminContent"></div>
+  </div>
+</section>
+</main>
+<footer>9-ELEVEN • PRIVATE DIGITAL HUB • <span>SECURE ACCESS</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
